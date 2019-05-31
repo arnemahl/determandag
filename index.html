@@ -60,6 +60,7 @@
       const day = new Date().getDay();
       const div = document.getElementById("hvilken-dag-er-det-i-dag");
       div.textContent = getContent(day);
+      document.title = getContent(day);
 
       if (day === 1) {
         div.classList.add("monday");
