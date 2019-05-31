@@ -3,12 +3,44 @@
   <head>
     <meta charset="utf-8" />
     <title>Det er …</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      div {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        font-family: sans-serif;
+        font-size: 5vh;
+      }
+      .monday {
+        background: #c13400;
+        color: #f07c4c;
+        animation: flash 333ms linear infinite;
+        font-size: 10vh;
+      }
+      @keyframes flash {
+        0% {
+          filter: hue-rotate(0) invert(0);
+        }
+        80% {
+          filter: hue-rotate(180deg) invert(1);
+        }
+        80% {
+          filter: hue-rotate(0) invert(1) ;
+        }
+      }
+    </style>
   </head>
   <body>
     <div id="hvilken-dag-er-det-i-dag" />
     <script>
-      function getContent() {
-        switch (new Date().getDay()) {
+      function getContent(day) {
+        switch (day) {
           case 1:
             return "DET ER MANDAG!";
           case 2:
@@ -25,8 +57,13 @@
             return "Det er søndag";
         }
       }
+      const day = new Date().getDay();
       const div = document.getElementById("hvilken-dag-er-det-i-dag");
-      div.textContent = getContent();
+      div.textContent = getContent(day);
+
+      if (day === 1) {
+        div.classList.add("monday");
+      }
     </script>
   </body>
 </html>
