@@ -63,6 +63,14 @@
 
       if (day === 1) {
         div.classList.add("monday");
+
+        const audio = new Audio("./DET-ER-MANDAG.mp3");
+        audio.addEventListener('loadeddata', () => {
+          audio.play();
+        });
+        div.onclick = () => {
+          audio.play();
+        }
       }
     </script>
   </body>
